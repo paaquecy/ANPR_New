@@ -496,7 +496,6 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onBackToLogin, onRegisterSu
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder={selectedAccountType === 'police' ? 'e.g., your.name@police.uk' : 'e.g., your.name@dvla.gov'}
                       placeholder={selectedAccountType === 'police' ? 'e.g., your.name@police.uk' : 'e.g., your.name@dvla.gov.uk'}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       required
