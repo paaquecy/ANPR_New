@@ -10,7 +10,8 @@ import {
   LogOut, 
   Search,
   Menu,
-  X
+  X,
+  Database,
 } from 'lucide-react';
 import OverviewDashboard from './components/OverviewDashboard';
 import ViolationFlagging from './components/ViolationFlagging';
@@ -22,7 +23,7 @@ import PersonalSettings from './components/PersonalSettings';
 // Lazy load VehicleScanner to avoid OpenCV loading issues
 const VehicleScanner = React.lazy(() => import('./components/VehicleScanner'));
 
-function App({ onLogout }: { onLogout?: () => void }) {
+function App() {
   const [activeNav, setActiveNav] = useState('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -121,8 +122,8 @@ function App({ onLogout }: { onLogout?: () => void }) {
   return (
     <div className="min-h-screen bg-gray-50 flex font-['Inter',sans-serif] relative">
       {/* Sidebar Navigation */}
-      <div className={`w-64 bg-white shadow-lg flex flex-col fixed min-h-screen z-40 transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      <div className={`w-64 bg-white shadow-lg flex flex-col fixed h-full z-40 transform transition-transform duration-300 ease-in-out ${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0
       }`}>
         {/* Sidebar Header */}
         <div className="p-4 lg:p-6 border-b border-gray-200 flex items-center justify-between">
@@ -170,10 +171,7 @@ function App({ onLogout }: { onLogout?: () => void }) {
               <p className="text-xs text-gray-500 truncate">Patrol Officer</p>
             </div>
           </div>
-          <button 
-            className="w-full flex items-center px-3 lg:px-4 py-2 text-xs lg:text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
-            onClick={onLogout}
-          >
+          <button className="w-full flex items-center px-3 lg:px-4 py-2 text-xs lg:text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
             <LogOut className="w-3 lg:w-4 h-3 lg:h-4 mr-2" />
             Logout
           </button>
